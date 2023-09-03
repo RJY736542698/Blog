@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cat.mapper.PageMapper" >
+  <sql id="t_columns" >
+    page_id, page_key, page_title, page_content, page_create_time, page_update_time, 
+    page_view_count, page_comment_count, page_status
+  </sql>
+  
+  <sql id="tb">page</sql>
+
+  <!--获得页面列表-->
+  <select id="listPage" resultType="Page">
+    SELECT   <include refid="t_columns"/>   FROM <include refid="tb"/>
+    <where>
+      <if test="status!=null">
+       	 page_status=#{status}
+      </if>
+    </where>
+  </select>
+  
+  <!--根据别名和状态获得page信息,(在外面用注解声明了参数名称)-->
+  <select id="getPageByKey"  resultType="Page" >
+    SELECT
+    <include refid="t_columns"/>
+    FROM
+     page
+    WHERE 1=1 
+      <if test="status!=null">
+        and page_status=#{status} 
+      </if> 
+     AND page_key=#{key} 
+  </select>
+  
+ <!-- 添加page -->
+  <insert id="addPage" parameterType="Page" useGeneratedKeys="true" keyProperty="pageId">
+    insert into page
+    ( page_id, page_key, page_title,
+      page_content, page_create_time, page_update_time, 
+      page_view_count, page_comment_count, page_status
+     )
+    values (#{pageId}, #{pageKey}, #{pageTitle},  #{pageContent}, #{pageCreateTime}, #{pageUpdateTime},  #{pageViewCount}, #{pageCommentCount}, #{pageStatus} )
+  </insert>
+  
+  <!-- 删除page -->
+  <delete id="deletePage" >
+    delete from page where page_id = #{v}
+  </delete>
+  
+</mapper>

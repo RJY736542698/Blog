@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cat.mapper.ArticleCategoryRefMapper">
+
+	<!-- 根据文章的id,查询出它属于哪些分类 -->
+    <select id="listCategoryByArticleId"  resultType="Category"> 
+         select * from category where  category_id in(select  category_id from article_category_ref where  article_id=#{value})
+    </select>
+    
+    <!-- 添加文章和分类的关联(通常是在添完文章以后,要维护这个关系) -->
+     <insert id="addArticleCategory" >
+        INSERT INTO article_category_ref  (article_id, category_id) VALUES (#{articleId}, #{categoryId})
+    </insert>
+    
+    <!-- 统计每个分类下有多少个文章 -->
+    <select id="countArticleByCategoryId" parameterType="int"  resultType="int">
+        select count(*) from article_category_ref  where category_id = #{value}
+    </select>
+    
+	<!-- 删除文章和分类的关联(通常是在更新或删除了文章之后) -->
+    <delete id="deleteByArticleId" parameterType="int">
+        delete from article_category_ref   where article_id = #{value}
+    </delete>
+    
+</mapper>

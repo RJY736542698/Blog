@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cat.mapper.OptionsMapper">
+   <sql id="t_columns">
+    option_id, option_site_title, option_site_descrption, option_meta_descrption, option_meta_keyword, 
+    option_aboutsite_photo, option_aboutsite_title, option_aboutsite_content, option_aboutsite_wechatphoto, 
+    option_aboutsite_qq, option_aboutsite_github, option_aboutsite_weibo, option_tongji, 
+    option_status
+  </sql>
+   	
+    <sql id="tb">options</sql>
+
+	<!-- 查询 (options 表中永远只有一条数据)  -->
+    <select id="getOptions" resultType="Options">
+        SELECT  <include refid="t_columns"/>  FROM  options
+    </select>
+
+	<!-- 更新 optionAboutsitePhoto 是个数组  .length != 0 是指如果用户没有指定图片,就不要做更新动作-->
+    <update id="updateOptions" parameterType="Options">
+        update  options
+        <set>
+            <if test="optionSiteTitle != null">option_site_title = #{optionSiteTitle},</if>
+            <if test="optionSiteDescrption != null">option_site_descrption = #{optionSiteDescrption}, </if>
+            <if test="optionMetaDescrption != null">option_meta_descrption = #{optionMetaDescrption},  </if>
+            <if test="optionMetaKeyword != null">option_meta_keyword = #{optionMetaKeyword},</if>
+            <if test="optionAboutsitePhoto.length != 0">option_aboutsite_photo =   #{optionAboutsitePhoto},  </if>
+            <if test="optionAboutsiteTitle != null">option_aboutsite_title = #{optionAboutsiteTitle}, </if>
+            <if test="optionAboutsiteContent != null">option_aboutsite_content = #{optionAboutsiteContent},   </if>
+            <if test="optionAboutsiteWechatphoto.length != 0">option_aboutsite_wechatphoto =  #{optionAboutsiteWechatphoto},  </if>
+            <if test="optionAboutsiteQq != null">option_aboutsite_qq = #{optionAboutsiteQq},</if>
+            <if test="optionAboutsiteGithub != null">option_aboutsite_github =   #{optionAboutsiteGithub},  </if>
+            <if test="optionAboutsiteWeibo != null">option_aboutsite_weibo = #{optionAboutsiteWeibo},    </if>
+            <if test="optionTongji != null">option_tongji = #{optionTongji},</if>
+            <if test="optionStatus != null">option_status = #{optionStatus}</if>
+        </set>
+    </update>
+</mapper>

@@ -1,0 +1,71 @@
+[33mcommit 57d2e2ffa835fe6660d04dafa4f672491afc71bf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: cat <732422364@qq.com>
+Date:   Tue May 5 14:34:05 2020 +0800
+
+    11 完成了文章列表页面的分页处理
+
+[33mcommit 9eca4b24059d96df012d0b50e1f8aa9a0cfbdfa8[m
+Author: cat <732422364@qq.com>
+Date:   Tue May 5 13:41:33 2020 +0800
+
+    10 完成了文章列表数据的提取(从article表中取数据, 从article_category_ref 表中取分类信息)
+
+[33mcommit f4795a94d78e5bb2263d49d0abfc9fe4f52dbdd1[m
+Author: cat <732422364@qq.com>
+Date:   Tue May 5 11:23:28 2020 +0800
+
+    09 完成了文章列表 article-list.jsp 中静态内容的引入
+
+[33mcommit 9e4cee21c9ddb5a577babe338ba9a0af90d4cd9e[m
+Author: cat <732422364@qq.com>
+Date:   Tue May 5 10:19:53 2020 +0800
+
+    08 完成了index.jsp中的 最新评论 列表数据的呈现
+
+[33mcommit bb835723bd4b0e34ee30d3f71910b9ee90919b9e[m
+Author: cat <732422364@qq.com>
+Date:   Tue May 5 07:55:35 2020 +0800
+
+    07 完成了index.jsp中 最新发布 列表数据的提取
+
+[33mcommit 1e91ada5e546fa35b6559b7f3d711698b757d9bc[m
+Author: cat <732422364@qq.com>
+Date:   Mon May 4 22:06:12 2020 +0800
+
+    06 在index.jsp中引入framework模,并重写了index.jsp中应有的内容(暂时用的是静态方式重写的)
+
+[33mcommit e1ae0b1961bbc86901c10eb5079ab6b4c133047e[m
+Author: cat <732422364@qq.com>
+Date:   Mon May 4 21:26:45 2020 +0800
+
+    05 完成了framework.jsp 这个模板页的设计,并在index.jsp中进行了最简单的引入
+
+[33mcommit b13558d5e6823f1c7284651865bd82b1f7287905[m
+Author: cat <732422364@qq.com>
+Date:   Mon May 4 15:10:15 2020 +0800
+
+    04 进行了和mybatis的整合,完成了登录功能
+
+[33mcommit 84f80ce27df4d214138e7699991ece2ccd5229c0[m
+Author: cat <732422364@qq.com>
+Date:   Mon May 4 14:32:49 2020 +0800
+
+    03 完成了登录页面login.jsp的设计 完成了springmvc最简单的流程
+
+[33mcommit 5ed7b4f9ffa51ad170100e2a89b610a7d9a3517b[m
+Author: cat <732422364@qq.com>
+Date:   Mon May 4 12:17:34 2020 +0800
+
+    02 在static目录中放入了 静态网页, 只起参照作用,这个目录不参与编译
+
+[33mcommit 7421b084803304fc6a65d21189d9b03d4f785da4[m
+Author: cat <732422364@qq.com>
+Date:   Mon May 4 07:59:06 2020 +0800
+
+    01 初始,空的maven项目
+
+[33mcommit 928474163fbaccdc4a7454de25cc05ad08b27f5d[m
+Author: fangyiguo <732422364@qq.com>
+Date:   Mon May 4 07:48:41 2020 +0800
+
+    Initial commit

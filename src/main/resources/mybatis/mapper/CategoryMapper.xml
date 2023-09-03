@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cat.mapper.CategoryMapper">
+   <sql id="t_cloumons">
+    	category_id, category_pid, category_name, category_description, category_order, category_icon
+   </sql>
+
+	<!-- 查询所有的分类列表 -->
+    <select id="listCategory" resultType="Category">
+        SELECT   <include refid="t_cloumons"/>     FROM  category  ORDER BY category_order desc,category_id asc
+    </select>
+    
+    <!-- 添加分类 -->
+    <insert id="addCategory"  useGeneratedKeys="true" keyProperty="categoryId">
+        insert into category
+        (category_pid, category_name,category_description, category_order, category_icon)
+        values (#{categoryPid,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR},
+        #{categoryDescription,jdbcType=VARCHAR}, #{categoryOrder,jdbcType=INTEGER}, #{categoryIcon,jdbcType=VARCHAR})
+    </insert>
+    
+    <!-- 根据父级分类id查询所有子分类 -->
+    <select id="listCategoryByParentId"  resultType="Category">
+    	  SELECT   <include refid="t_cloumons"/>   
+    	   FROM  category where category_pid= #{v} ORDER BY category_order desc,category_id asc
+    </select>
+</mapper>
